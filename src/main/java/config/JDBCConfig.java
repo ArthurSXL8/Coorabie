@@ -1,9 +1,9 @@
 package config;
 
-public class JDBCConfig {
-  private final ConfigMap configMap;
+public class JDBCConfig implements Config {
+  private final KeyValueConfig keyValueConfig;
 
   public JDBCConfig(String path) {
-    configMap = new ConfigMap(path);
+    keyValueConfig = new KeyValueConfig.Builder(path).build();
   }
 }

@@ -2,6 +2,9 @@ package model.sinker;
 
 import model.exception.CoorabieException;
 
-public interface Sinker<T> extends Iterable<T> {
-  boolean sink(T t);
+import java.util.List;
+
+public interface Sinker<T> {
+  boolean sink(T message);
+  boolean batchSink(List<T> messages);
 }

@@ -1,9 +1,13 @@
 package config;
 
-public class FlinkConfig {
-  private ConfigMap configMap;
+public class FlinkConfig implements Config {
+  private volatile KeyValueConfig kvConfig;
 
   public FlinkConfig(String path) {
-    configMap = new ConfigMap(path);
+    kvConfig = new KeyValueConfig.Builder(path).build();
+  }
+
+  public boolean updateConfig(Config config) {
+    if (!(config instanceof FlinkConfig))
   }
 }

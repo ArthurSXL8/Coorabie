@@ -1,10 +1,10 @@
 package config;
 
-public class HttpConfig {
-  private ConfigMap configMap;
+public class HttpConfig implements Config {
+  private KeyValueConfig keyValueConfig;
 
   public HttpConfig(String path) {
-    configMap = new ConfigMap(path);
+    keyValueConfig = new KeyValueConfig.Builder(path).build();
   }
 
   public int getSocketTimeoutMillis() {

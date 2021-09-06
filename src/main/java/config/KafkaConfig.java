@@ -1,9 +1,9 @@
 package config;
 
-public class KafkaConfig {
-  private final ConfigMap configMap;
+public class KafkaConfig implements Config {
+  private final KeyValueConfig keyValueConfig;
 
   public KafkaConfig(String path) {
-    configMap = new ConfigMap(path);
+    keyValueConfig = new KeyValueConfig.Builder(path).build();
   }
 }

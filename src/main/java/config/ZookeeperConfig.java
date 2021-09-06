@@ -1,9 +1,18 @@
 package config;
 
-public class ZookeeperConfig {
-  private ConfigMap configMap;
+public class ZookeeperConfig implements Config {
+  private volatile KeyValueConfig keyValueConfig;
 
   public ZookeeperConfig(String path) {
-    configMap = new ConfigMap(path);
+    keyValueConfig = new KeyValueConfig.Builder(path).build();
+  }
+
+  public boolean updateConfig(Config config) {
+    if (!(config instanceof ZookeeperConfig)) {
+      return false;
+    }
+    ZookeeperConfig zkConfig = (ZookeeperConfig) config;
+    keyValueConfig = zkConfig.keyValueConfig;
+    return true;
   }
 }
